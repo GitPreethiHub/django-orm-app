@@ -33,28 +33,24 @@ Include your ER diagram here
    *    Add students with credentials in the webpage.
 
 ## PROGRAM
-### models.py code
+### Models.py code
+     from django.db import models
+     from django.contrib import admin
+     class Student (models.Model):
+     referencenumber=models.CharField(primary_key=True,max_length=20,help_text="reference number")
+     name=models.CharField(max_length=100)
+     gender=models.CharField(max_length=50,null=True)
+     age=models.IntegerField()
+     email=models.EmailField()
 
- from django.db import models
-from django.contrib import admin
-
-class Student (models.Model):
-referencenumber=models.CharField(primary_key=True,max_length=20,help_text="reference number")
-name=models.CharField(max_length=100)
-gender=models.CharField(max_length=50,null=True)
-age=models.IntegerField()
-email=models.EmailField()
-
-class StudentAdmin(admin.ModelAdmin):
-list_display = ('referencenumber','name','gender','age','email')
-
+     class StudentAdmin(admin.ModelAdmin):
+     list_display = ('referencenumber','name','gender','age','email')
 
 ### admin.py code
- 
-from django.contrib import admin
-from .models import Student,StudentAdmin
+     from django.contrib import admin
+     from .models import Student,StudentAdmin
 
-admin.site.register(Student,StudentAdmin)
+     admin.site.register(Student,StudentAdmin)
 
 
 ## OUTPUT
